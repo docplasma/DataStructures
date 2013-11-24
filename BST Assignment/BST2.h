@@ -9,54 +9,16 @@
 #ifndef BST_Assignment_BST2_h
 #define BST_Assignment_BST2_h
 
+#include "BinNode.h"
+
 template <typename DataType, class KeyType>
 class BST2
 {
 private:
     /***** Node structure *****/
-    class BinNode
-    {
-    public:
-        DataType data;
-        BinNode * left;
-        BinNode *  right;
-        
-        // BinNode constructors
-        // Default -- data part undefined; both links null
-        BinNode()
-        : left(0), right(0)
-        {}
-        
-        // Explicit Value -- data part contains item; both links null
-        BinNode(DataType item)
-        : data(item), left(0), right(0)
-        {}
-    };
-    /***** Key Value Structure *****/
-    //template <typename DataType, class KeyType>
-    class KeyValue {
-    private:
-        //Hashes key
-        std::hash<KeyType> hashKey(KeyType preHash) {
-            std::hash<KeyType> postHash (preHash);
-            return postHash;
-        }
-    public:
-        DataType value;
-        KeyType key;
-        
-        //-----Default Constructor
-        KeyValue() : value(0), key(0){
-        }
-        
-        //Explicity Values
-        KeyValue(DataType item, KeyType preHash) {
-            key = hashKey(preHash);
-        }
-        
-    };
-    
-    typedef BinNode * BinNodePointer;
+    //Has been movded to BinNode.h
+
+    typedef BinNode<DataType, KeyType> * BinNodePointer;
     
 public:
     /***** Function Members *****/
@@ -84,7 +46,7 @@ public:
      Postcondition: Returns true if item found, and false otherwise.
      -----------------------------------------------------------------------*/
     
-    void insert(const DataType & item);
+    void insert(const DataType & item, const KeyType & key);
     /*------------------------------------------------------------------------
      Insert item into BST2.
      
@@ -184,13 +146,13 @@ bool BST2<DataType, KeyType>::search(const DataType & item) const
 //--- Definition of insert()
 
 template <class DataType, class KeyType>
-inline void BST2<DataType, KeyType>::insert(const DataType & item)
+inline void BST2<DataType, KeyType>::insert(const DataType & item, const KeyType & key)
 {
-    //std::hash<KeyType> item_hash (item);
     BST2<DataType, KeyType>::BinNodePointer
     locptr = myRoot,   // search pointer
     parent = 0;        // pointer to parent of current node
     bool found = false;     // indicates if item already in BST2
+    
     while (!found && locptr != 0)
     {
         parent = locptr;
@@ -203,7 +165,7 @@ inline void BST2<DataType, KeyType>::insert(const DataType & item)
     }
     if (!found)
     {                                 // construct node containing item
-        locptr = new BST2<DataType, KeyType>::BinNode(item);
+        locptr = new BinNode<DataType, KeyType>(item, key);
         if (parent == 0)               // empty tree
             myRoot = locptr;
         else if (item < parent->data )  // insert to left of parent

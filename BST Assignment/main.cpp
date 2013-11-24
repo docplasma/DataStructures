@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
     // Testing Constructor and empty()
-    BST2<int, string> intBST2;            // test the class constructor
+    BST2<int, int> intBST2;            // test the class constructor
     cout << "Constructing empty BST2\n";
     cout << "BST2 " << (intBST2.empty() ? "is" : "is not") << " empty\n";
     
@@ -27,7 +27,7 @@ int main()
         cin >> number;
         if (number == -999)
             break;
-        intBST2.insert(number);
+            intBST2.insert(number, 9999);
     }
     
     cout << "Inorder Traversal of BST2: \n";

@@ -7,34 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF78C19E18415949005B4F6E /* BST_Assignment.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = EF78C19D18415949005B4F6E /* BST_Assignment.1 */; };
-		EF78C1A618415990005B4F6E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EF78C1A518415990005B4F6E /* main.cpp */; };
+		EFE2C2911842AE9600FB5FC4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EFE2C2901842AE9600FB5FC4 /* main.cpp */; };
+		EFE2C2931842AE9600FB5FC4 /* hashtest.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = EFE2C2921842AE9600FB5FC4 /* hashtest.1 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EF78C19618415949005B4F6E /* CopyFiles */ = {
+		EFE2C28B1842AE9600FB5FC4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				EF78C19E18415949005B4F6E /* BST_Assignment.1 in CopyFiles */,
+				EFE2C2931842AE9600FB5FC4 /* hashtest.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		EF78C19818415949005B4F6E /* BST Assignment */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "BST Assignment"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF78C19D18415949005B4F6E /* BST_Assignment.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = BST_Assignment.1; sourceTree = "<group>"; };
-		EF78C1A418415990005B4F6E /* BST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST.h; sourceTree = "<group>"; };
-		EF78C1A518415990005B4F6E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		EF78C1A718415A08005B4F6E /* BST2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BST2.h; sourceTree = "<group>"; };
-		EFE2C28318429D4600FB5FC4 /* BinNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinNode.h; sourceTree = "<group>"; };
+		EFE2C28D1842AE9600FB5FC4 /* hashtest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hashtest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFE2C2901842AE9600FB5FC4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		EFE2C2921842AE9600FB5FC4 /* hashtest.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = hashtest.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EF78C19518415949005B4F6E /* Frameworks */ = {
+		EFE2C28A1842AE9600FB5FC4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -44,93 +41,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EF78C18F18415949005B4F6E = {
+		EFE2C2841842AE9600FB5FC4 = {
 			isa = PBXGroup;
 			children = (
-				EF78C1A418415990005B4F6E /* BST.h */,
-				EF78C1A718415A08005B4F6E /* BST2.h */,
-				EFE2C28318429D4600FB5FC4 /* BinNode.h */,
-				EF78C1A518415990005B4F6E /* main.cpp */,
-				EF78C19A18415949005B4F6E /* BST Assignment */,
-				EF78C19918415949005B4F6E /* Products */,
+				EFE2C28F1842AE9600FB5FC4 /* hashtest */,
+				EFE2C28E1842AE9600FB5FC4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		EF78C19918415949005B4F6E /* Products */ = {
+		EFE2C28E1842AE9600FB5FC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EF78C19818415949005B4F6E /* BST Assignment */,
+				EFE2C28D1842AE9600FB5FC4 /* hashtest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EF78C19A18415949005B4F6E /* BST Assignment */ = {
+		EFE2C28F1842AE9600FB5FC4 /* hashtest */ = {
 			isa = PBXGroup;
 			children = (
-				EF78C19D18415949005B4F6E /* BST_Assignment.1 */,
+				EFE2C2901842AE9600FB5FC4 /* main.cpp */,
+				EFE2C2921842AE9600FB5FC4 /* hashtest.1 */,
 			);
-			path = "BST Assignment";
+			path = hashtest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EF78C19718415949005B4F6E /* BST Assignment */ = {
+		EFE2C28C1842AE9600FB5FC4 /* hashtest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF78C1A118415949005B4F6E /* Build configuration list for PBXNativeTarget "BST Assignment" */;
+			buildConfigurationList = EFE2C2961842AE9600FB5FC4 /* Build configuration list for PBXNativeTarget "hashtest" */;
 			buildPhases = (
-				EF78C19418415949005B4F6E /* Sources */,
-				EF78C19518415949005B4F6E /* Frameworks */,
-				EF78C19618415949005B4F6E /* CopyFiles */,
+				EFE2C2891842AE9600FB5FC4 /* Sources */,
+				EFE2C28A1842AE9600FB5FC4 /* Frameworks */,
+				EFE2C28B1842AE9600FB5FC4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "BST Assignment";
-			productName = "BST Assignment";
-			productReference = EF78C19818415949005B4F6E /* BST Assignment */;
+			name = hashtest;
+			productName = hashtest;
+			productReference = EFE2C28D1842AE9600FB5FC4 /* hashtest */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		EF78C19018415949005B4F6E /* Project object */ = {
+		EFE2C2851842AE9600FB5FC4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Dexter Parks";
 			};
-			buildConfigurationList = EF78C19318415949005B4F6E /* Build configuration list for PBXProject "BST Assignment" */;
+			buildConfigurationList = EFE2C2881842AE9600FB5FC4 /* Build configuration list for PBXProject "hashtest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = EF78C18F18415949005B4F6E;
-			productRefGroup = EF78C19918415949005B4F6E /* Products */;
+			mainGroup = EFE2C2841842AE9600FB5FC4;
+			productRefGroup = EFE2C28E1842AE9600FB5FC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EF78C19718415949005B4F6E /* BST Assignment */,
+				EFE2C28C1842AE9600FB5FC4 /* hashtest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EF78C19418415949005B4F6E /* Sources */ = {
+		EFE2C2891842AE9600FB5FC4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF78C1A618415990005B4F6E /* main.cpp in Sources */,
+				EFE2C2911842AE9600FB5FC4 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		EF78C19F18415949005B4F6E /* Debug */ = {
+		EFE2C2941842AE9600FB5FC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -163,7 +157,7 @@
 			};
 			name = Debug;
 		};
-		EF78C1A018415949005B4F6E /* Release */ = {
+		EFE2C2951842AE9600FB5FC4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -189,14 +183,14 @@
 			};
 			name = Release;
 		};
-		EF78C1A218415949005B4F6E /* Debug */ = {
+		EFE2C2971842AE9600FB5FC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		EF78C1A318415949005B4F6E /* Release */ = {
+		EFE2C2981842AE9600FB5FC4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -206,25 +200,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EF78C19318415949005B4F6E /* Build configuration list for PBXProject "BST Assignment" */ = {
+		EFE2C2881842AE9600FB5FC4 /* Build configuration list for PBXProject "hashtest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EF78C19F18415949005B4F6E /* Debug */,
-				EF78C1A018415949005B4F6E /* Release */,
+				EFE2C2941842AE9600FB5FC4 /* Debug */,
+				EFE2C2951842AE9600FB5FC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF78C1A118415949005B4F6E /* Build configuration list for PBXNativeTarget "BST Assignment" */ = {
+		EFE2C2961842AE9600FB5FC4 /* Build configuration list for PBXNativeTarget "hashtest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EF78C1A218415949005B4F6E /* Debug */,
-				EF78C1A318415949005B4F6E /* Release */,
+				EFE2C2971842AE9600FB5FC4 /* Debug */,
+				EFE2C2981842AE9600FB5FC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = EF78C19018415949005B4F6E /* Project object */;
+	rootObject = EFE2C2851842AE9600FB5FC4 /* Project object */;
 }
