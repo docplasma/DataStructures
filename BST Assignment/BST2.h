@@ -8,7 +8,7 @@
 
 #ifndef BST_Assignment_BST2_h
 #define BST_Assignment_BST2_h
-
+#include <functional>
 #include "BinNode.h"
 
 template <typename DataType, class KeyType>
@@ -16,26 +16,13 @@ class BST2
 {
 private:
     /***** Node structure *****/
-   
-    class BinNode {
-    public:
-        DataType data;
-        size_t key;
-        BinNode * left;
-        BinNode *  right;
-        
-        // BinNode constructors
-        // Default -- data part undefined; both links null
-        BinNode()
-        : left(0), right(0)
-        {}
-        
-        // Explicit Value -- data part contains item; both links null
-        BinNode(DataType item, size_t hashKey) : data(item), key(hashKey), left(0), right(0) {
-        }
-    };
+    //Moved to BinNode.h
 
-    typedef BinNode * BinNodePointer;
+    typedef BinNode<DataType, KeyType> * BinNodePointer;
+    
+    size_t hashKey(KeyType preHash) {
+        return std::hash<KeyType>()(preHash);
+    }
     
 public:
     /***** Function Members *****/
@@ -168,14 +155,15 @@ inline void BST2<DataType, KeyType>::insert(const DataType & item, const KeyType
     BST2<DataType, KeyType>::BinNodePointer
     locptr = myRoot,   // search pointer
     parent = 0;        // pointer to parent of current node
+    size_t hashedKey = hashKey(key); //Hashes the given key
     bool found = false;     // indicates if item already in BST2
     
     while (!found && locptr != 0)
     {
         parent = locptr;
-        if (item < locptr->data)       // descend left
+        if (hashedKey < locptr->key)       // descend left
             locptr = locptr->left;
-        else if (locptr->data < item)  // descend right
+        else if (locptr->key < hashedKey)  // descend right
             locptr = locptr->right;
         else                           // item found
             found = true;
