@@ -30,7 +30,6 @@
 		EF78C1A418415990005B4F6E /* BST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BST.h; sourceTree = "<group>"; };
 		EF78C1A518415990005B4F6E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		EF78C1A718415A08005B4F6E /* BST2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BST2.h; sourceTree = "<group>"; };
-		EFE2C28318429D4600FB5FC4 /* BinNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinNode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +48,6 @@
 			children = (
 				EF78C1A418415990005B4F6E /* BST.h */,
 				EF78C1A718415A08005B4F6E /* BST2.h */,
-				EFE2C28318429D4600FB5FC4 /* BinNode.h */,
 				EF78C1A518415990005B4F6E /* main.cpp */,
 				EF78C19A18415949005B4F6E /* BST Assignment */,
 				EF78C19918415949005B4F6E /* Products */,

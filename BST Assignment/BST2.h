@@ -16,9 +16,26 @@ class BST2
 {
 private:
     /***** Node structure *****/
-    //Has been movded to BinNode.h
+   
+    class BinNode {
+    public:
+        DataType data;
+        size_t key;
+        BinNode * left;
+        BinNode *  right;
+        
+        // BinNode constructors
+        // Default -- data part undefined; both links null
+        BinNode()
+        : left(0), right(0)
+        {}
+        
+        // Explicit Value -- data part contains item; both links null
+        BinNode(DataType item, size_t hashKey) : data(item), key(hashKey), left(0), right(0) {
+        }
+    };
 
-    typedef BinNode<DataType, KeyType> * BinNodePointer;
+    typedef BinNode * BinNodePointer;
     
 public:
     /***** Function Members *****/
