@@ -8,8 +8,11 @@ using namespace std;
 
 int main()
 {
+    string key = "some key";
+    //char key[] = "some key";
+    //int key = 99999;
     // Testing Constructor and empty()
-    BST2<int, int> intBST2;            // test the class constructor
+    BST2<int, string> intBST2;            // test the class constructor
     cout << "Constructing empty BST2\n";
     cout << "BST2 " << (intBST2.empty() ? "is" : "is not") << " empty\n";
     
@@ -27,7 +30,7 @@ int main()
         cin >> number;
         if (number == -999)
             break;
-            intBST2.insert(number, 9999);
+            intBST2.insert(number, key);
     }
     
     cout << "Inorder Traversal of BST2: \n";
@@ -44,7 +47,7 @@ int main()
         cin >> number;
         if (number == -999)
             break;
-        cout << (intBST2.search(number) ? "Found" : "Not found") << endl;
+        cout << (intBST2.search(number, key) ? "Found" : "Not found") << endl;
     }
     
     // Testing remove()
@@ -56,7 +59,7 @@ int main()
         cin >> number;
         if (number == -999)
             break;
-        intBST2.remove(number);
+        intBST2.remove(number, key);
     }
     cout << "\nInorder Traversal of BST2: \n";
     intBST2.inorder(cout);

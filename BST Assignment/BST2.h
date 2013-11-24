@@ -9,18 +9,34 @@
 #ifndef BST_Assignment_BST2_h
 #define BST_Assignment_BST2_h
 #include <functional>
-#include "BinNode.h"
+//#include "BinNode.h"
+#include <vector>
 
 template <typename DataType, class KeyType>
 class BST2
 {
 private:
     /***** Node structure *****/
-    //Moved to BinNode.h
-
-    typedef BinNode<DataType, KeyType> * BinNodePointer;
+    class BinNode {
+    public:
+        vector<DataType> data;
+        size_t key;
+        BinNode * left;
+        BinNode *  right;
+        
+        // BinNode constructors
+        // Default -- data part undefined; both links null
+        BinNode()
+        : left(0), right(0)
+        {}
+        
+        // Explicit Value -- data part contains item; both links null
+        BinNode(DataType item, size_t hashKey) : data(item), key(hashKey), left(0), right(0) {
+        }
+    };
+    typedef BinNode * BinNodePointer;
     
-    size_t hashKey(KeyType preHash) {
+    size_t hashKey(KeyType preHash) const {
         return std::hash<KeyType>()(preHash);
     }
     
@@ -42,7 +58,7 @@ public:
      Postcondition: Returns true if BST2 is empty and false otherwise.
      -----------------------------------------------------------------------*/
     
-    bool search(const DataType & item) const;
+    bool search(const DataType & item, const KeyType & key) const;
     /*------------------------------------------------------------------------
      Search the BST2 for item.
      
@@ -59,7 +75,7 @@ public:
      position to maintain BST2 property.
      ------------------------------------------------------------------------*/
     
-    void remove(const DataType & item);
+    void remove(const DataType & item, const KeyType & key);
     /*------------------------------------------------------------------------
      Remove item from BST2.
      
@@ -82,7 +98,7 @@ public:
     
 private:
     /***** Private Function Members *****/
-    void search2(const DataType & item, bool & found,
+    void search2(const DataType & item, const KeyType & key, bool & found,
                  BinNodePointer & locptr, BinNodePointer & parent);
     /*------------------------------------------------------------------------
      Locate a node containing item and its parent.
@@ -130,16 +146,17 @@ inline bool BST2<DataType, KeyType>::empty() const
 
 //--- Definition of search()
 template <typename DataType, class KeyType>
-bool BST2<DataType, KeyType>::search(const DataType & item) const
+bool BST2<DataType, KeyType>::search(const DataType & item, const KeyType & key) const
 {
     BST2<DataType, KeyType>::BinNodePointer locptr = myRoot;
+    size_t hashedKey = hashKey(key); //Hashes the given key
     bool found = false;
     for (;;)
     {
         if (found || locptr == 0) break;
-        if (item < locptr->data)       // descend left
+        if (item < locptr->data[0])       // descend left
             locptr = locptr->left;
-        else if (locptr->data < item)  // descend right
+        else if (locptr->data[0] < item)  // descend right
             locptr = locptr->right;
         else                           // item found
             found = true;
@@ -170,27 +187,27 @@ inline void BST2<DataType, KeyType>::insert(const DataType & item, const KeyType
     }
     if (!found)
     {                                 // construct node containing item
-        locptr = new BinNode<DataType, KeyType>(item, key);
+        locptr = new BinNode(item, hashedKey);
         if (parent == 0)               // empty tree
             myRoot = locptr;
-        else if (item < parent->data )  // insert to left of parent
+        else if (item < parent->data[0] )  // insert to left of parent
             parent->left = locptr;
         else                           // insert to right of parent
             parent->right = locptr;
     }
     else
-        cout << "Item already in the tree\n";
+        locptr->data.push_back(item);
 }
 
 //--- Definition of remove()
 template <class DataType, class KeyType>
-void BST2<DataType, KeyType>::remove(const DataType & item)
+void BST2<DataType, KeyType>::remove(const DataType & item, const KeyType & key)
 {
     bool found;                      // signals if item is found
     BST2<DataType, KeyType>::BinNodePointer
     x,                            // points to node containing
     parent;                       //    "    " parent of x and xSucc
-    search2(item, found, x, parent);
+    search2(item, key, found, x, parent);
     
     if (!found)
     {
@@ -239,7 +256,7 @@ inline void BST2<DataType, KeyType>::inorder(ostream & out)
 
 //--- Definition of search2()
 template <class DataType, class KeyType>
-void BST2<DataType, KeyType>::search2(const DataType & item, bool & found,
+void BST2<DataType, KeyType>::search2(const DataType & item, const KeyType & key, bool & found,
                             BST2<DataType, KeyType>::BinNodePointer & locptr,
                             BST2<DataType, KeyType>::BinNodePointer & parent)
 {
@@ -248,12 +265,12 @@ void BST2<DataType, KeyType>::search2(const DataType & item, bool & found,
     found = false;
     while (!found && locptr != 0)
     {
-        if (item < locptr->data)       // descend left
+        if ( item < locptr->data[0])       // descend left
         {
             parent = locptr;
             locptr = locptr->left;
         }
-        else if (locptr->data < item)  // descend right
+        else if (locptr->data[0] < item)  // descend right
         {
             parent = locptr;
             locptr = locptr->right;
@@ -271,7 +288,7 @@ void BST2<DataType, KeyType>::inorderAux(ostream & out,
     if (subtreeRoot != 0)
     {
         inorderAux(out, subtreeRoot->left);    // L operation
-        out << subtreeRoot->data << "  ";      // V operation
+        out << subtreeRoot->data[0] << "  ";      // V operation
         inorderAux(out, subtreeRoot->right);   // R operation
     }
 }
