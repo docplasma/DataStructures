@@ -1,25 +1,25 @@
 /*----- treetester.cpp ----------------------------
- Program for testing class template BST.
+ Program for testing class template BST2.
  ------------------------------------------------*/
 #include <iostream>
 using namespace std;
 
-#include "BST.h"
+#include "BST2.h"
 
 int main()
 {
     // Testing Constructor and empty()
-    BST<int> intBST;            // test the class constructor
-    cout << "Constructing empty BST\n";
-    cout << "BST " << (intBST.empty() ? "is" : "is not") << " empty\n";
+    BST2<int, string> intBST2;            // test the class constructor
+    cout << "Constructing empty BST2\n";
+    cout << "BST2 " << (intBST2.empty() ? "is" : "is not") << " empty\n";
     
     // Testing inorder
-    cout << "Inorder Traversal of BST: \n";
-    intBST.inorder(cout);
+    cout << "Inorder Traversal of BST2: \n";
+    intBST2.inorder(cout);
     
     // Testing insert
-    cout << "\nNow insert a bunch of integers into the BST."
-    "\nTry items not in the BST and some that are in it:\n";
+    cout << "\nNow insert a bunch of integers into the BST2."
+    "\nTry items not in the BST2 and some that are in it:\n";
     int number;
     for (;;)
     {
@@ -27,38 +27,38 @@ int main()
         cin >> number;
         if (number == -999)
             break;
-        intBST.insert(number);
+        intBST2.insert(number);
     }
     
-    cout << "Inorder Traversal of BST: \n";
-    intBST.inorder(cout);
+    cout << "Inorder Traversal of BST2: \n";
+    intBST2.inorder(cout);
     
     cout << endl;
     
     // Testing search()
     cout << "\n\nNow testing the search() operation."
-    "\nTry both items in the BST and some not in it:\n";
+    "\nTry both items in the BST2 and some not in it:\n";
     for (;;)
     {
         cout << "Item to find (-999 to stop): \n";
         cin >> number;
         if (number == -999)
             break;
-        cout << (intBST.search(number) ? "Found" : "Not found") << endl;
+        cout << (intBST2.search(number) ? "Found" : "Not found") << endl;
     }
     
     // Testing remove()
     cout << "\nNow testing the remove() operation."
-    "\nTry both items in the BST and some not in it:\n";
+    "\nTry both items in the BST2 and some not in it:\n";
     for (;;)
     {
         cout << "Item to remove (-999 to stop): ";
         cin >> number;
         if (number == -999)
             break;
-        intBST.remove(number);
+        intBST2.remove(number);
     }
-    cout << "\nInorder Traversal of BST: \n";
-    intBST.inorder(cout);
+    cout << "\nInorder Traversal of BST2: \n";
+    intBST2.inorder(cout);
     cout << endl;
 }
