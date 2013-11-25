@@ -19,7 +19,8 @@ private:
     /***** Node structure *****/
     class BinNode {
     public:
-        vector<DataType> data;
+        vector<DataType>data = vector<int>(5,0);
+        //vector<int> pointer = vector<int>(5,0);
         size_t key;
         BinNode * left;
         BinNode *  right;
@@ -197,10 +198,14 @@ inline void BST2<DataType, KeyType>::insert(const DataType & item, const KeyType
             parent->left = locptr;
         else                           // insert to right of parent
             parent->right = locptr;
-        locptr->data.push_back(item);
+        //int index = locptr->data.size();
+        locptr->data.insert(locptr->data.begin(), item);
     }
-    else
-        locptr->data.push_back(item);
+    else {
+        int index = locptr->data.size();
+        locptr->data[index] = item;
+        //locptr->data[locptr->data.size()] = item;
+    }
 }
 
 //--- Definition of remove()
@@ -294,6 +299,9 @@ void BST2<DataType, KeyType>::inorderAux(ostream & out, BST2<DataType, KeyType>:
         inorderAux(out, subtreeRoot->left);    // L operation
         out << "Node members: ";
         for (int i=0;i<subtreeRoot->data.size();i++) {
+            if (i > 0 && subtreeRoot->data[i] == 0) { //Breaks out of the printing if the rest of the container is empty
+                break;
+            }
             out << subtreeRoot->data[i] << " ";
         }
         out << endl;
