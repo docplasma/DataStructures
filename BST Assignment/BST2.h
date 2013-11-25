@@ -189,8 +189,7 @@ inline void BST2<DataType, KeyType>::insert(const DataType & item, const KeyType
         else                           // item found
             found = true;
     }
-    if (!found)
-    {                                 // construct node containing item
+    if (!found) {                                 // construct node containing item
         locptr = new BinNode(item, hashedKey);
         if (parent == 0)               // empty tree
             myRoot = locptr;
@@ -198,6 +197,7 @@ inline void BST2<DataType, KeyType>::insert(const DataType & item, const KeyType
             parent->left = locptr;
         else                           // insert to right of parent
             parent->right = locptr;
+        locptr->data.push_back(item);
     }
     else
         locptr->data.push_back(item);
@@ -292,7 +292,11 @@ void BST2<DataType, KeyType>::inorderAux(ostream & out, BST2<DataType, KeyType>:
     if (subtreeRoot != 0)
     {
         inorderAux(out, subtreeRoot->left);    // L operation
-        out << subtreeRoot->data[0] << "  ";      // V operation
+        out << "Node members: ";
+        for (int i=0;i<subtreeRoot->data.size();i++) {
+            out << subtreeRoot->data[i] << " ";
+        }
+        out << endl;
         inorderAux(out, subtreeRoot->right);   // R operation
     }
 }
