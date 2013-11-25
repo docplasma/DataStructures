@@ -58,7 +58,7 @@ public:
      Postcondition: Returns true if BST2 is empty and false otherwise.
      -----------------------------------------------------------------------*/
     
-    bool search(const DataType & item, const KeyType & key) const;
+    bool search(const DataType & item, const KeyType & key, vector<DataType> *& data) const;
     /*------------------------------------------------------------------------
      Search the BST2 for item.
      
@@ -146,7 +146,7 @@ inline bool BST2<DataType, KeyType>::empty() const
 
 //--- Definition of search()
 template <typename DataType, class KeyType>
-bool BST2<DataType, KeyType>::search(const DataType & item, const KeyType & key) const
+bool BST2<DataType, KeyType>::search(const DataType & item, const KeyType & key, vector<DataType> *& dataPointer) const
 {
     BST2<DataType, KeyType>::BinNodePointer locptr = myRoot;
     size_t hashedKey = hashKey(key); //Hashes the given key
@@ -154,12 +154,16 @@ bool BST2<DataType, KeyType>::search(const DataType & item, const KeyType & key)
     for (;;)
     {
         if (found || locptr == 0) break;
-        if (item < locptr->data[0])       // descend left
+        if (hashedKey < locptr->key)       // descend left
             locptr = locptr->left;
-        else if (locptr->data[0] < item)  // descend right
+        else if (locptr->key< hashedKey)  // descend right
             locptr = locptr->right;
-        else                           // item found
+        else {                          // item found
             found = true;
+            cout << "\ndata location: " << &locptr->data <<endl;
+            dataPointer = &locptr->data;
+        }
+        
     }
     return found;
 }
@@ -190,7 +194,7 @@ inline void BST2<DataType, KeyType>::insert(const DataType & item, const KeyType
         locptr = new BinNode(item, hashedKey);
         if (parent == 0)               // empty tree
             myRoot = locptr;
-        else if (item < parent->data[0] )  // insert to left of parent
+        else if (hashedKey < parent->key )  // insert to left of parent
             parent->left = locptr;
         else                           // insert to right of parent
             parent->right = locptr;
@@ -260,17 +264,18 @@ void BST2<DataType, KeyType>::search2(const DataType & item, const KeyType & key
                             BST2<DataType, KeyType>::BinNodePointer & locptr,
                             BST2<DataType, KeyType>::BinNodePointer & parent)
 {
+    size_t hashedKey = hashKey(key); //Hashes the given key
     locptr = myRoot;
     parent = 0;
     found = false;
     while (!found && locptr != 0)
     {
-        if ( item < locptr->data[0])       // descend left
+        if ( hashedKey < locptr->key)       // descend left
         {
             parent = locptr;
             locptr = locptr->left;
         }
-        else if (locptr->data[0] < item)  // descend right
+        else if (locptr->key < hashedKey)  // descend right
         {
             parent = locptr;
             locptr = locptr->right;
@@ -282,8 +287,7 @@ void BST2<DataType, KeyType>::search2(const DataType & item, const KeyType & key
 
 //--- Definition of inorderAux()
 template <class DataType, class KeyType>
-void BST2<DataType, KeyType>::inorderAux(ostream & out,
-                               BST2<DataType, KeyType>::BinNodePointer subtreeRoot)
+void BST2<DataType, KeyType>::inorderAux(ostream & out, BST2<DataType, KeyType>::BinNodePointer subtreeRoot)
 {
     if (subtreeRoot != 0)
     {

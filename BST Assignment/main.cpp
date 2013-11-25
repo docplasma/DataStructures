@@ -5,6 +5,7 @@
 using namespace std;
 
 #include "BST2.h"
+//#include <vector>
 
 int main()
 {
@@ -43,11 +44,20 @@ int main()
     "\nTry both items in the BST2 and some not in it:\n";
     for (;;)
     {
+        vector<int> * searchResults;
         cout << "Item to find (-999 to stop): \n";
         cin >> number;
         if (number == -999)
             break;
-        cout << (intBST2.search(number, key) ? "Found" : "Not found") << endl;
+        //cout << (intBST2.search(number, key, searchResults) ? "Found" : "Not found") << endl;
+        bool found = intBST2.search(number, key, searchResults);
+        if (found) {
+            cout << "Item found, contents:" << endl;
+            for (int i = 0; i < searchResults->size(); i++) {
+                cout << searchResults->at(i) << endl;
+            }
+            cout << endl;
+        }
     }
     
     // Testing remove()
